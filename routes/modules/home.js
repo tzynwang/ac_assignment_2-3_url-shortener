@@ -37,4 +37,11 @@ router.post('/', async (req, res) => {
   res.render('index', { result: true, shortUrl: `${process.env.APP_URL}${shorten}` })
 })
 
+router.get('/:shorten', async (req, res) => {
+  const shorten = req.params.shorten
+  const result = await URL.find({ shorten }).lean()
+  if (!result.length) return res.status(404).render('404')
+  res.redirect(`${result[0].originUrl}`)
+})
+
 module.exports = router
