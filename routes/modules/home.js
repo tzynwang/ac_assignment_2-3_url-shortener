@@ -29,10 +29,7 @@ router.post('/', async (req, res) => {
     checkResult = await URL.find({ shorten }).lean()
   }
 
-  const newURL = new URL({
-    originUrl,
-    shorten
-  })
+  const newURL = new URL({ originUrl, shorten })
   await newURL.save()
   res.render('index', { result: true, shortUrl: `${process.env.APP_URL}${shorten}` })
 })
