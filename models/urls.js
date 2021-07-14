@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const urlSchema = new mongoose.Schema({
-  origin_url: {
+  originUrl: {
     type: String,
     trim: true
   },
