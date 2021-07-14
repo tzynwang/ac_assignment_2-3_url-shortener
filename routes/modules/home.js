@@ -4,6 +4,9 @@ const router = express.Router()
 // DB
 const URL = require('../../models/urls')
 
+// URL validation
+const { urlValidate } = require('../../tools/urlValidate')
+
 // shorten URL function
 const { generateShortUrl } = require('../../tools/shortenUrl')
 
@@ -13,6 +16,14 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
   const { originUrl } = req.body
+  if (!originUrl) {
+    return res.render('index', { input: true, errorMessage: 'Please enter URL' })
+  }
+
+  if (!urlValidate(originUrl)) {
+    return res.render('index', { input: true, errorMessage: 'Please enter valid URL' })
+  }
+
   const shortUrl = await URL.find({ originUrl }).lean()
 
   if (shortUrl.length) {

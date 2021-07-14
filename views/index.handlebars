@@ -4,6 +4,7 @@
       <form action="/" method="POST" class="d-flex flex-column justify-content-center align-items-center p-3 top-20">
         <h1>URL Shortener</h1>
         <i class="bi bi-link-45deg"></i>
+        {{>errorMessage}}
 
         {{#if input}}{{>input}}{{/if}}
         {{#if result}}{{>result}}{{/if}}
