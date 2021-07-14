@@ -1,0 +1,13 @@
+form {
+  border-radius: 2rem;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+form i {
+  font-size: 4rem;
+}
+
+.top-20 {
+  position: relative;
+  top: 20%;
+}
