@@ -18,9 +18,6 @@
     "mongoose": "^5.13.2"
   },
   "devDependencies": {
-    "axios": "^0.21.1",
-    "browserify": "^17.0.0",
-    "nodemon": "^2.0.12",
-    "watchify": "^4.0.0"
+    "nodemon": "^2.0.12"
   }
 }
