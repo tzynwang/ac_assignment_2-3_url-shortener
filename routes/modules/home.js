@@ -8,7 +8,7 @@ const URL = require('../../models/urls')
 const { urlValidate } = require('../../tools/urlValidate')
 
 // shorten URL function
-const { generateShortUrl } = require('../../tools/shortenUrl')
+const { shortenUrlBase62 } = require('../../tools/shortenUrlBase62')
 
 router.get('/', (req, res) => {
   res.render('index', { input: true })
@@ -33,10 +33,10 @@ router.post('/', async (req, res) => {
     })
   }
 
-  let shorten = generateShortUrl()
+  let shorten = shortenUrlBase62()
   let checkResult = await URL.find({ shorten }).lean()
   while (checkResult.length) {
-    shorten = generateShortUrl()
+    shorten = shortenUrlBase62()
     checkResult = await URL.find({ shorten }).lean()
   }
 
